@@ -21,11 +21,7 @@ const Text = styled.div`
   font-size: 1.2rem;
   color: #bc444c;
   font-weight: 600;
-
-  svg {
-    cursor: pointer;
-  }
-
+  cursor: pointer;
   span {
     padding-left: 1rem;
   }
@@ -50,7 +46,7 @@ const ToDoItems = ({ todo, onToggle, onRemove }) => {
 
   return (
     <ToDoItemsBlock>
-      <Text className={checked ? "checked" : ""}>
+      <Text onClick={(e) => onToggle(id)} className={checked ? "checked" : ""}>
         {checked ? <AiFillCheckSquare /> : <AiOutlineCheckCircle />}
         <span>{data}</span>
       </Text>

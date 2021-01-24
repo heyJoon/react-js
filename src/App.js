@@ -1,4 +1,4 @@
-import { useImperativeHandle, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import ToDoInsert from "./ToDoInsert";
 import ToDoList from "./ToDoList";
 import ToDoTemplate from "./ToDoTemplate";
@@ -34,10 +34,16 @@ function App() {
     setTodos(newTodos);
   };
 
-  const onToggle = () => {};
+  const onToggle = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  };
 
   const onRemove = (id) => {
-    const removedTodos = todos.filter((item) => item.id !== id);
+    const removedTodos = todos.filter((todo) => todo.id !== id);
     newId.current--;
     setTodos(removedTodos);
   };
